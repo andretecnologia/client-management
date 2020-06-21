@@ -18,7 +18,16 @@ export class ClientesService {
     return this.http.post<Cliente>(this.baseUrl + '/clientes', cliente);
   }
 
+  atualizar( cliente: Cliente ) : Observable<any>{
+    return this.http.put<Cliente>(this.baseUrl + `/clientes/${cliente.id}`, cliente);
+  }
+
   getClientes() : Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.baseUrl + '/clientes');
   }
+
+  getClienteById(id: number){
+    return this.http.get<any>(this.baseUrl + `/clientes/${id}`);
+  }
+
 }
